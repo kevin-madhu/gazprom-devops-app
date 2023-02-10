@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 import mysql.connector
+from prometheus_flask_exporter import PrometheusMetrics
 
 
 class DBManager:
@@ -32,6 +33,7 @@ class DBManager:
 
 server = Flask(__name__)
 conn = None
+metrics = PrometheusMetrics(server)
 
 @server.route('/')
 def listBlog():
