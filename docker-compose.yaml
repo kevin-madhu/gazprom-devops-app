@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: dbpassword
+      MYSQL_DATABASE: example
+  
+  web:
+    build: 
+      context: .
+
+    ports: 
+      - '5000:5000'
+
+    depends_on: 
+      - db 
